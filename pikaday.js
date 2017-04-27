@@ -67,7 +67,7 @@
             ev = document.createEvent('HTMLEvents');
             ev.initEvent(eventName, true, false);
             ev = extend(ev, data);
-            el.dispatchEvent(ev);
+            // el.dispatchEvent(ev);
         } else if (document.createEventObject) {
             ev = document.createEventObject();
             ev = extend(ev, data);
