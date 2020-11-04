@@ -16,7 +16,7 @@
     <input type="text" id="datepicker">
 
     <script src="pikaday.js"></script>
-    
+
     <script>
 
     var picker = new Pikaday(
@@ -39,6 +39,8 @@
             document.getElementById('selected').appendChild(date);
         }
     });
+
+    picker.setMoment(moment().dayOfYear(366));
 
     </script>
 </body>
