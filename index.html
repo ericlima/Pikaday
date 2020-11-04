@@ -11,20 +11,9 @@
 <body>
     <h1>Pikaday</h1>
 
-    <p class="large">A refreshing JavaScript Datepicker — lightweight, no dependencies, modular CSS.</p>
-
-    <p><a href="https://github.com/dbushell/Pikaday"><strong>Pikaday source on GitHub</strong></a></p>
-
     <label for="datepicker">Date:</label>
     <br>
     <input type="text" id="datepicker">
-
-    <h2>What is this?</h2>
-
-    <p>Since version 1.0 Pikaday is a stable and battle tested date-picker. Feel free to use it however you like but please report any bugs or feature requests to the <a href="https://github.com/dbushell/Pikaday/issues">GitHub issue tracker</a>, thanks!</p>
-
-    <p class="small">Copyright © 2014 <a href="http://dbushell.com/">David Bushell</a> | BSD &amp; MIT license</p>
-
 
     <script src="pikaday.js"></script>
     <script>
@@ -32,10 +21,22 @@
     var picker = new Pikaday(
     {
         field: document.getElementById('datepicker'),
-        firstDay: 1,
-        minDate: new Date(),
-        maxDate: new Date(2020, 12, 31),
-        yearRange: [2000,2020]
+        firstDay: 0,
+        format: 'DD/MM/yyyy',
+        minDate: new Date(1900, 0, 1),
+        maxDate: new Date(2100, 12, 31),
+        yearRange: [1900,2100],
+        i18n: {
+            previousMonth : 'anterior',
+            nextMonth     : 'seguinte',
+            months        : ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+            weekdays      : ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+            weekdaysShort : ['Dom','Seg','Ter','Qua','Qui','Sex','Sab']
+        },
+        onSelect: function() {
+            var date = document.createTextNode(this.getMoment().format('yyyy-MM-DD') + ' ');
+            document.getElementById('selected').appendChild(date);
+        }
     });
 
     </script>
